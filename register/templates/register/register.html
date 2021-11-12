@@ -1,0 +1,62 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> {% block title %} {{ block.super }} Register {% endblock title %} </title>
+</head>
+<body>
+    {% block content %}
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 my-3 text-center">
+                     <img src="{% static 'register/images/register.jpg' %}" alt="..." class="img-thumbnail">
+                </div>
+                <div class="col-md-6 text-light">
+                    <h1 class="text-center kaushan text-info my-4"> Registration Form </h1>
+                    <form method="POST" class="form-group" novalidate>
+                        <div class="row mt-4 mb-2">
+                        {% csrf_token %}
+                            {% for field in fm %}
+                                <div class="col-md-6 my-1"> 
+                                    <div class="row my-3 text-center">
+                                        <div class="col-md-4"> {{ field.label_tag }} </div>
+                                        <div class="col-md-8"> {{ field }} 
+                                            <div class="col-md-12 text-center">
+                                                {% if field.help_text %}
+                                                    <small class="text-warning"> {{ field.help_text }} </small>
+                                                {% endif %}
+                                            </div>
+                                            <div class="col-md-12 text-justify">
+                                                 {% if field.errors %}
+                                                    <div class="col-md-12 text-red"> {{ field.errors }} </div>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>  
+                        <div class="text-center">
+                            <button type="submit" value="submit" class="btn btn-warning">Register</button>
+                        </div>
+                        {% if form.non_field_errors %}
+                            {% for error in form.non_field_errors %}
+                                <p class="alert alert-danger my-3"> {{ error }} </p>
+                            {% endfor %}
+                        {% endif %}
+                    </form>
+                </div>
+            </div>
+        </div>
+        <hr>
+    {% endblock content %}
+    {% block script %}
+        <script src=" {% static 'register/js/register.js' %} "></script>
+    {% endblock script %}
+</body>
+</html>

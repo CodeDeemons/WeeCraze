@@ -1,0 +1,52 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> {% block title %} {{ block.super }} Login {% endblock title %} </title>
+</head>
+<body>
+    {% block content %}
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 offset-2 mt-2 py-4 text-light">
+                    <h1 class="text-center kaushan text-success"> Login Form </h1>
+                    <div class="row my-5">
+                        <form action=" {% url 'login' %} " method="POST" class="col-md-8 mx-2 my-3 form-group">
+                        {% csrf_token %}
+                             {% for field in fm %}
+                                <div class="row my-3">
+                                    <div class="col-md-12"> {{ field.label_tag }} </div>
+                                    <div class="col-md-12"> {{ field }} 
+                                    {% if field.help_text %}
+                                        <small class="col-md-12 text-warning"> {{ field.help_text }} </small>
+                                    {% endif %}
+                                    <div class="col-md-12 text-center">
+                                        {% for error in field.errors %}
+                                            <div class="col-md-12 text-red"> {{ error }} </div>
+                                        {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                            <div class="my-2 p-1">
+                                <button type="submit" class="btn btn-outline-success">Login</button>
+                                <button type="button" class="btn btn-outline-warning">Forget Password</button> <br> <br>
+                                <a href="{% url 'register' %}"> <button type="button" class="btn btn-outline-danger"> Don't have an account.. <br> create a new one </button> </a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-6 my-3 text-center">
+                    <img src="{% static 'login/images/login.jpg' %}" alt="..." class="img-thumbnail"><br>
+                </div>
+            </div>
+        </div>
+        <hr>
+    {% endblock content %}
+</body>
+</html>

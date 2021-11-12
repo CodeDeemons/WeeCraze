@@ -1,0 +1,31 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title> {% block title %} {{ block.super }} Thank You {% endblock title %} </title>
+    {% block css %}
+        <link rel="stylesheet" href="{% static 'booking/css/thank_you.css' %}">
+    {% endblock css %}
+</head>
+<body>
+    {% block content %}
+        <div class="container-fluid">
+            <div class="scene">
+                <h1 class="text-success text-center kaushan"> Hey, {{ request.user.first_name}} {{ request.user.last_name}} </>
+                <h2 class="text-warning text-center kaushan">  Your trip to {{ destiny }} with {{ vehicle }} is Confirmed. </h2>
+                <h3 class="text-danger text-center garamond mt-2 mb-1"> Thank You..!!  Visit Again.. </h3>
+                <h2 class="text-info text-center garamond"> Have a nice and Happy Journey </h2>
+                <div class="sun"></div>
+                <div class="bg" style="background-image:url('{% static 'booking/images/tybg.png' %}')">
+                    <img src="{% static 'booking/images/tybus.gif' %}" class="tybus">
+                    <img src="{% static 'booking/images/tybike.gif' %}" class="tybike">
+                    <img src="{% static 'booking/images/tycar.gif' %}" class="tycar">
+                </div>
+            </div>
+        </div>
+        <hr>
+    {% endblock content %}
+</body>
+</html>

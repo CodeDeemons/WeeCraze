@@ -1,0 +1,55 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> {% block title %} {{ block.super }} Destiny {% endblock title %} </title>
+</head>
+<body>
+    {% block content %}
+        <div class="container">
+        <div class="row"></div>
+        {% if request.user.is_authenticated %}
+            {% if user.is_superuser %}
+                <div class="text-center my-4">
+                    <a href=" {% url 'add_dest' %} "><button type="button" class="btn btn-info">Add New</button></a>
+                </div>
+            {% else %}
+                <h1 class="kaushan text-center my-3 text-info">Choose Your Destination</h1>
+            {% endif %}
+        {% else %}
+            <h2 class="kaushan text-center my-5 text-warning">You need to Login to book a trip now..!!</h2>
+        {% endif %}
+            <div class="row my-3">
+                {% for dest in destiny_show %}
+                    <div class="col-md-4">
+                        <div class="card mb-4 border border-warning mx-3">
+                            <img class="card-img-top" data-src="" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;"
+                                src="{% static 'destiny/images/'|add:dest.img_name|add:'/'|add:dest.img_name|add:'1.jpg' %}" data-holder-rendered="true">
+                            <div class="card-body">
+                                <h5 class="kaushan"> {{ dest.name }} <br> <small class="text-danger"> {{ dest.state }} </small> </h5>
+                                <p class="card-text"> {{ dest.short_desc }} </p>
+                                <div class="text-center">
+                                    {% if request.user.is_authenticated %}
+                                        {% if user.is_superuser %}
+                                            <a href="{% url 'delete_dest' dest.id %}" class="ml-1 btn btn-sm btn-outline-danger"> Delete </a>
+                                            {% else %}
+                                                <a href="{% url 'select_dest' dest.name %}" class="btn btn-sm btn-outline-success ml-1"> Select </a>
+                                        {% endif %}
+                                    {% endif %}
+                                    <a href="{% url 'dest_info' dest.name %}" class="btn btn-sm btn-outline-primary"> View More </a> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    <hr>
+    {% endblock content %}
+</body>
+</html>

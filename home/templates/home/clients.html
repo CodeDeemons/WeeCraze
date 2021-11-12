@@ -1,0 +1,47 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> {% block title %} {{ block.super }} Clients {% endblock title %} </title>
+</head>
+<body>
+    {% block content %}
+        <div class="container my-4">
+            <h2 class="kaushan text-center text-warning my-2"> Clients Data </h2>
+            <table class="table table-hover mt-3 garamond lead">
+                <div class="row">
+                    <thead class="border-bottom-0">
+                        <tr class="text-success text-justify">
+                            <th scope="col" class="pl-5">Id</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Contact</th>
+                            <th scope="col">Options</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for cdata in clients_data %}
+                        <tr class="text-light text-justify">
+                            <td scope="row" class="pl-5"> {{ cdata.id }} </td>
+                            <td> {{ cdata.first_name }} {{ cdata.last_name }} </td>
+                            <td> {{ cdata.email }} </td>
+                            <td> {{ cdata.contact }} </td>
+                            <td> 
+                                <button type="button" class="btn btn-sm btn-info"> View </button>
+                                <button type="button" class="btn btn-sm btn-warning"> Edit </button>
+                                <a href=" {% url 'delete_client' cdata.id %} "> <button type="button" class="btn btn-sm btn-danger">Delete</button> </a> 
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </div>
+            </table>
+        </div>
+    {% endblock content %}
+</body>
+</html>

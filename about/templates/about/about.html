@@ -1,0 +1,91 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> {% block title %} {{ block.super }} About {% endblock title %} </title>
+</head>
+<body>
+    {% block content %}
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 my-3 text-center">
+                     <img src="{% static 'about/images/about.jpg' %}" alt="..." class="img-thumbnail">
+                </div>
+                <div class="col-md-6 text-light kaushan">
+                    <h1 class="kaushan text-success text-center my-4">About Creator</h1>
+                    <h4 class="font-weight-light text-justify"> I'm a Post Graduate student persuing MCA course from <span class="text-warning"> Loyola Academy UG &amp; PG College, Hyderabad, Telangana</span>. I am in final year of my academic year and presented this wabsite as my minor as well as major project.</h3>
+                    <div class="row mt-5 mb-2 lead">
+                        <div class="col-md-4 text-danger">
+                            Name
+                        </div>
+                        <div class="col-md-8 text-warning">
+                            Deepak Kr Barnwal
+                        </div>
+                    </div>
+                    <div class="row mb-2 lead">
+                        <div class="col-md-4 text-danger">
+                            Birth Date
+                        </div>
+                        <div class="col-md-8 text-warning">
+                            May 11, 1997
+                        </div>
+                    </div>
+                    <div class="row mb-2 lead">
+                        <div class="col-md-4 text-danger">
+                           Home Town
+                        </div>
+                        <div class="col-md-8 text-warning">
+                            Bompass Town, Deoghar, Jharkhand
+                        </div>
+                    </div>
+                    <div class="row mb-2 lead">
+                        <div class="col-md-4 text-danger">
+                            Zip Code
+                        </div>
+                        <div class="col-md-8 text-warning">
+                            814114
+                        </div>
+                    </div>
+                    <div class="row mb-2 lead">
+                        <div class="col-md-4 text-danger">
+                            Contact
+                        </div>
+                        <div class="col-md-8 text-warning">
+                            8409141019
+                        </div>
+                    </div>
+                    <div class="row lead">
+                        <div class="col-md-4 text-danger">
+                            Email
+                        </div>
+                        <div class="col-md-8 text-warning">
+                            deepakbarnwal0511@gmail.com
+                        </div>
+                    </div>
+                    <div class="row my-5 lead">
+                        <div class="col-md-3 text-info">
+                            <i class="fa fa-music"> &nbsp; Music </i>
+                        </div>
+                        <div class="col-md-3 border-left text-light">
+                            <i class="fa fa-gamepad"> &nbsp; Games </i>
+                        </div>
+                        <div class="col-md-3 border-left text-success">
+                            <i class="fa fa-code"> &nbsp; Code </i>
+                        </div>
+                        <div class="col-md-3 border-left text-warning">
+                            <i class="fa fa-motorcycle"> &nbsp; Ride </i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+    {% endblock content %}
+</body>
+</html>

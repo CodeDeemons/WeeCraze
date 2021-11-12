@@ -1,0 +1,66 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" type="image/jpg" href="{% static 'home/images/favicon.png' %}"/>
+  <title> {% block title %} WeeCraze | {% endblock title %} </title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="{% static 'home/css/style.css' %}">
+  {% block css %}{% endblock css %}
+</head>
+<body>
+  <div class="container c-name text-center text-warning my-2">
+    <img class="icon-image" src="{% static 'home/images/favicon.png' %}" alt=""> 
+    <span class="text-danger">Wee</span>Craze
+  </div>
+
+  <div class="container">
+        {% include 'home/navbar.html' %}
+
+        <hr>
+
+        {% comment %} get message from response {% endcomment %}
+        <div class="col-md-6 offset-3">
+            {% if messages %}
+                {% for message in messages %}
+                    <div {% if message.tags %} class="alert alert-{{ message.tags }} alert-dismissible text-center mb-5 fade show" {% endif %}> 
+                        {{ message }} 
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+  </div>
+
+  <div class="container-fluid my-1">
+        <div class="row">
+            <div class="col-sm-12">
+                {% block msg %}
+                {% endblock msg %}
+            </div>
+        </div>
+        <div class="row"> 
+            {% block content %}
+            {% endblock content %}
+        </div>
+  </div>
+
+  <hr>
+
+  <div class="container-fluid">
+        {% include 'home/footer.html' %}
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  {% block script %}{% endblock script %}
+</body>
+</html>

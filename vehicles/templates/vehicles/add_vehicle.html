@@ -1,0 +1,50 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> {% block title %} {{ block.super }} Add Vehicle {% endblock title %} </title>
+</head>
+<body>
+    {% block content %}
+         <div class="container">
+            <div class="row">
+                <div class="col-md-6 mt-2 py-4 text-light">
+                    <h1 class="kaushan text-warning text-center"> Add New Vehicle </h2>
+                    <form action=" {% url 'add_vehicle' %} " method="POST" class="my-3">
+                    {% csrf_token %}
+                        <div class="row">
+                        {% for form in fm %}
+                            <div class="col-md-6 form-group">
+                                <div class="row my-3 text-justify">
+                                    <div class="col-md-3">
+                                        {{ form.label_tag }}
+                                    </div>
+                                    <div class="col-md-9">
+                                        {{ form }}    
+                                    </div>
+                                    <div class="col-md-12">
+                                        <small class="text-warning"> {{form.errors|striptags}} </small>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" value="add" class="btn btn-primary">Add</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-6 text-center my-3">
+                    <img src="{% static 'vehicles/images/add_vehicle.jpg' %}" alt="..." class="img-thumbnail">
+                </div>
+            </div>
+        </div>
+        <hr>
+    {% endblock content %}
+</body>
+</html>

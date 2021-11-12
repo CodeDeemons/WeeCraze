@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital@1&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: rgb(52, 58, 64);
+}
+
+li a {
+    font-family: 'Kaushan Script', cursive;
+}
+
+.icon-image {
+    width: 40px;
+    height: 40px;
+}
+
+.c-name {
+    font-size: 2rem;
+    font-family: 'Kaushan Script', cursive;
+}
+
+.navbar a {
+    font-size: 1.2rem;
+}
+
+hr {
+    width: 91%;
+    margin: 0 4.5%;
+    border-bottom: 1px solid white;
+}
+
+.kaushan {
+    font-family: 'Kaushan Script', cursive;
+}
+
+.garamond {
+    font-family: 'EB Garamond', serif;
+}
+
+.info {
+    line-height: 1.4em;
+    font-size: 1.2em;
+    font-style: italic;
+}
+
+.more-info {
+    background-color: rgba(162, 32, 123, .1);
+}
+
+.links ul li p a,
+a {
+    text-decoration: none;
+}
+
+.links ul li p a:hover {
+    color: wheat;
+}
+
+.links,
+.address,
+.social-icons {
+    font-size: 1.1em;
+}
+
+.social-icons a {
+    color: wheat;
+    text-decoration: none;
+}
+
+.social-icons .facebook a:hover {
+    color: lightseagreen;
+}
+
+.social-icons .instagram a:hover {
+    color: orangered;
+}
+
+.social-icons .twitter a:hover {
+    color: rgba(146, 161, 245, 0.733);
+}
+
+.social-icons .github a:hover {
+    color: lightseagreen;
+}
+
+.social-icons .linkedin a:hover {
+    color: rgba(250, 65, 65, 0.952);
+}
